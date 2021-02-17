@@ -1,0 +1,104 @@
+<p-toolbar>
+  <div class="p-toolbar-group-left">
+    <button routerLink="login" pButton pRipple type="button" label="Logout" class="p-button-rounded p-button-danger"
+    (click)="logout()"></button>
+  </div>
+</p-toolbar>
+
+
+<body>
+
+<div class="wrapper">
+
+  <form method="post" action="" #f="ngForm" id="checkForm">
+
+
+    <div id="XRlocation">
+
+      <div id="area_x" class="border">
+        <p><label for="coordinateX">Choose a coordinate Х: </label></p>
+        <p-slider id="coordinateX" name="coordinateX" [(ngModel)]="x" [min]="-5" [max]="3" [step]="1" ></p-slider>
+        <p>Value: {{x}}</p>
+      </div>
+
+      <div id="area_r" class="border">
+        <p><label for="coordinateR">Choose a parameter R: </label></p>
+        <p-slider id="coordinateR" name="coordinateR" [(ngModel)]="r" [min]="-5" [max]="3" (onChange)="handleChange($event)"></p-slider>
+        <p>Value: {{r}}</p>
+        <div *ngIf="done">
+          <div>{{answer}}</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="YSlocation">
+
+      <div id="area_y" class="border">
+        <p><label for="coordinateY">Choose a parameter Y: </label></p>
+        <p-slider id="coordinateY" name="coordinateR" [(ngModel)]="y" [min]="-3" [max]="5" [step]="1"></p-slider>
+        <p>Value: {{y}}</p>
+        <br class="coordinateYE">
+      </div>
+
+      <div id="area_submit">
+        <p><input type="submit" id="formSubmit" value="Check" (click)="onSubmit(f)">
+      </div>
+    </div>
+  </form>
+
+  <div id="diagram" class="da" (click)="onClick($event)" >
+    <svg class="svvg" #svvg id="svgDiagram" xmlns="http://www.w3.org/2000/svg" width="300" height="300">
+      <line x1="0" y1="150" x2="300" y2="150" stroke="#000000"></line>
+      <line x1="150" y1="0" x2="150" y2="300" stroke="#000000"></line>
+
+      <line x1="250" y1="145" x2="250" y2="155" stroke="#000000"></line>
+      <line x1="200" y1="145" x2="200" y2="155" stroke="#000000"></line>
+      <line x1="100" y1="145" x2="100" y2="155" stroke="#000000"></line>
+      <line x1="50" y1="145" x2="50" y2="155" stroke="#000000"></line>
+
+      <line x1="145" y1="50" x2="155" y2="50" stroke="#000000"></line>
+      <line x1="145" y1="100" x2="155" y2="100" stroke="#000000"></line>
+      <line x1="145" y1="200" x2="155" y2="200" stroke="#000000"></line>
+      <line x1="145" y1="250" x2="155" y2="250" stroke="#000000"></line>
+
+      <text x="245" y="140" stroke="#000000">{{r}}</text>
+      <text x="185" y="140" stroke="#000000">{{r/2}}</text>
+      <text x="77" y="140" stroke="#000000">-{{r/2}}</text>
+      <text x="37" y="140" stroke="#000000">-{{r}}</text>
+      <text x="156" y="55" stroke="#000000">{{r}}</text>
+      <text x="156" y="105" stroke="#000000">{{r/2}}</text>
+      <text x="156" y="205" stroke="#000000">-{{r/2}}</text>
+      <text x="156" y="255" stroke="#000000">-{{r}}</text>
+      <polygon points="300,150 295,155 295, 145" fill="#000720" stroke="#000000"></polygon>
+      <polygon points="150,0 145,5 155,5" fill="#000720" stroke="#000000"></polygon>
+
+      <rect x="150" y="100" width="100" height="50" fill-opacity="0.4" stroke="navy" fill="blue"></rect>
+      <polygon points="150,150 100,150 150,200" fill-opacity="0.4" stroke="navy" fill="blue"></polygon>
+      <path d="M150 150 L 250 150 C 250 150 250 250 150 250 L Z" fill-opacity="0.4" stroke="navy" fill="blue"></path>
+
+    </svg>
+  </div>
+
+  <div id="table-wrapper">
+    <div id="table-scroll">
+      <table id="tableWithResults">
+        <tr>
+          <th>X</th>
+          <th>Y</th>
+          <th>R</th>
+          <th>RESULT</th>
+        </tr>
+        <tbody>
+        <tr *ngFor="let point of pointsList">
+          <td>{{point.x}}</td>
+          <td>{{point.y}}</td>
+          <td>{{point.r}}</td>
+          <td>{{point.hit}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>

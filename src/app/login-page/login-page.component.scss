@@ -1,0 +1,101 @@
+
+$mobile: 0;
+$tablet: 737px;
+$desktop: 1247px;
+
+// Mixins
+@mixin shrink-limit($width) {
+  min-width: $width;
+  flex-basis: $width;
+}
+
+// Panel container
+ul {
+  margin: 0.5rem -0.25rem;
+  justify-content: stretch; // horizontal alignment
+  display: flex;
+  align-items: flex-start; // on top of items
+  flex-wrap: wrap;
+}
+
+// Panels
+.wrapper > * {
+  margin: 0 0.25rem 0.5rem;
+}
+
+router-outlet {
+  margin: 0 0.50rem 1rem;
+}
+
+
+// Desktop
+@media screen and (min-width: $desktop) {
+  #checkForm {
+    flex-grow: 1;
+  }
+  #header {
+    text-align: center;
+  }
+}
+
+// Tablet
+@media screen and (min-width: $tablet) and (max-width: $desktop) {
+  #header {
+    flex-basis: 100%; // forces table-panel be screen-wide on next row
+
+  }
+
+  #header {
+    margin-left: auto;
+    margin-right: auto;
+    background: #7deeff;
+  }
+  .mt-4 {
+    margin-top: 5rem!important;
+  }
+
+}
+
+@media (min-width: $tablet){
+.offset-md-3 {
+  margin-left: 25%;
+}}
+
+@media (min-width: $tablet){
+.offset-md-3 {
+  margin-left: 25%;
+}}
+
+@media (min-width: $tablet) {
+  .col-md-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+}
+
+// Mobile
+@media screen and (max-width: $tablet) {
+  //#area_x, #area_y, #area_r{
+  //  align-self: center;
+  //}
+  #header {
+    flex-basis: 100%; // forces table-panel be screen-wide on next row
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 10em;
+    background: #7deeff;
+  }
+
+  .mt-4 {
+    margin-top: 5rem!important;
+  }
+
+  .form-control {
+    display: block;
+    width: 50%;
+  }
+}
+
+.p-toolbar-group-right > * {
+  margin-left: 0.4rem
+}
