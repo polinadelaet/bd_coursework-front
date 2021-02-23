@@ -15,6 +15,7 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
   private user: User;
   login: string;
   password: string;
+  password2: string;
   aSub: Subscription;
   answer: string;
   done: boolean = false;
@@ -22,7 +23,6 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
   constructor(private auth: AuthService,
               @Inject(Router) private router: Router,
               private route: ActivatedRoute) {
-
   }
 
   ngOnInit(): void {
@@ -48,7 +48,6 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
         });
       },
       error => {
-
         this.done = true;
         if (error.status == '401' || error.status == '400') {
           this.answer = 'The user already exists.';

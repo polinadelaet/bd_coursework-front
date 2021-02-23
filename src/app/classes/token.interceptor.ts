@@ -9,7 +9,6 @@ export class TokenInterceptor implements HttpInterceptor {
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
       let authReq;
       if (localStorage.getItem('auth-login') == null || localStorage.getItem('auth-login') == undefined) {
       authReq = req.clone({
@@ -30,10 +29,6 @@ export class TokenInterceptor implements HttpInterceptor {
             )
         });
       }
-     // }
-      console.log(this.auth.getLogin());
-      console.log(this.auth.getPassword());
-      console.log('v tokene');
       return next.handle(authReq);
     }
 }

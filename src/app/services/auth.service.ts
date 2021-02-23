@@ -22,22 +22,16 @@ export class AuthService {
 
     this.loginH = user.login;
     this.passwordH = user.password;
-    console.log('in auth l= ' + user.login);
-    console.log('in auth p= ' + user.password);
 
     return this.http.post<{token: string}>(this.url + '/auth/login', user)
       .pipe(
         tap(
           ({token}) => {
-            //  localStorage.setItem('auth-token', user.login);
-            console.log('skipidi');
             localStorage.setItem('auth-login', user.login);
             localStorage.setItem('auth-pass', user.password);
-            console.log(localStorage.getItem('auth-login'));
             this.setLogin(user.login);
           },
           (err) => {
-            console.log('ошибка');
             console.log(err);
           }
         )
@@ -86,7 +80,6 @@ export class AuthService {
   }
 
   addPoint(point: Point): Observable<{result: string}> {
-
-    return this.http.post<{result: string}>(this.url + '/points/add-point', point);
+    return this.http.post<{result: string}>(this.url + '/points', point);
   }
 }

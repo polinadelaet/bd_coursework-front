@@ -26,15 +26,12 @@ export class LoginPageComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
   }
 
   ngOnDestroy() {
-
   }
 
   onSubmit(form: NgForm) {
-    //  form.form.disable();
     this.user = new User();
     this.user.login = this.login;
     this.user.password = this.password;
@@ -50,7 +47,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
           }
         form.form.enable();
       },
-      () => console.log('complete login-page')
     );
   }
 }

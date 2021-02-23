@@ -1,8 +1,8 @@
 body {
   color: aliceblue;
   font-size: 22px;
-  min-width: 50%;
-  //background-image: url("IMG.jpg");
+  //min-width: 50%;
+  background-image: url("IMG.jpg");
   background-size: cover;
 }
 
@@ -24,6 +24,7 @@ header {
 }
 
 .wrapper {
+  margin: 0rem 0rem!important;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-auto-rows: minmax(100px, auto);
@@ -195,7 +196,6 @@ $desktop: 1247px;
 .wrapper {
   margin: 0.5rem -0.25rem;
   justify-content: stretch; // horizontal alignment
-  display: flex;
   align-items: flex-start; // on top of items
   flex-wrap: wrap;
 }
@@ -207,7 +207,10 @@ $desktop: 1247px;
 
 
 // Desktop
-@media screen and (min-width: $desktop) {
+@media screen and (min-width: $desktop) and (max-width: 1756px){
+  .wrapper {
+    display: flex;
+  }
   #checkForm {
     flex-grow: 1;
   }
@@ -219,6 +222,9 @@ $desktop: 1247px;
 
 // Tablet
 @media screen and (min-width: $tablet) and (max-width: $desktop) {
+  .wrapper {
+    display: flex;
+  }
   #table-wrapper {
     flex-basis: 100%; // forces table-panel be screen-wide on next row
   }
@@ -239,6 +245,7 @@ $desktop: 1247px;
   .wrapper {
     flex-direction: column;
     align-items: stretch;
+    display: flex;
   }
   #diagram {
     align-self: center;

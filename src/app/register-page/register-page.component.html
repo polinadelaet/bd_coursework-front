@@ -1,9 +1,13 @@
 <div class="row">
   <div class="col-md-6 offset-md-3 mt-4">
-    <h3>Registration</h3>
+    <h3 align="center">Registration</h3>
+    <div class="border" align="center">
+      Please fill in the information below to create your account.
+    </div>
+
     <form #f="ngForm">
       <div class="form-group">
-        <label for="login">Username</label>
+        <label for="login"><b>Username:</b></label>
         <input type="text"
                [(ngModel)]="login"
                name="login"
@@ -25,13 +29,13 @@
       </div>
 
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password"><b>Password:</b></label>
         <input type="password"
                [(ngModel)]="password"
                name="password"
                class="form-control"
                id="password"
-               placeholder="Password"
+               placeholder="Enter password"
                required minlength="2"
                #passwordv="ngModel">
         <div [hidden]="passwordv.valid || passwordv.untouched" class="alert alert-danger">
@@ -46,9 +50,34 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <label for="password2"><b>Repeat password:</b></label>
+        <input type="password"
+               [(ngModel)]="password2"
+               name="password2"
+               class="form-control"
+               id="password2"
+               placeholder="Repeat password"
+               required minlength="2"
+               #password1="ngModel">
+        <div [hidden]="(password1.valid || password1.untouched) && password == password2" class="alert alert-danger">
+          <div *ngIf="password != password2">
+            Passwords should be the same.
+          </div>
 
-      <button type="submit" [disabled]="loginv.invalid || passwordv.invalid || f.disabled" (click)="onSubmit(f)"
-              class="btn btn-primary">Create<i class="fas fa-sign-in-alt"></i></button>
+          <div *ngIf="password1.errors">
+            <div *ngIf="password1.errors.required">
+              It is required.
+            </div>
+            <div *ngIf="password1.errors.minlength">
+              Name must be at least 2 characters long.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button style="background-color: #ffd2db; border-color: #fff1fd; color: #6c6c6c" type="submit" [disabled]="loginv.invalid || passwordv.invalid || f.disabled || (password != password2)" (click)="onSubmit(f)"
+              class="btn btn-primary submit">Create<i class="fas fa-sign-in-alt"></i></button>
     </form>
 
 

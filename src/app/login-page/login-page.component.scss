@@ -1,24 +1,35 @@
-
 $mobile: 0;
 $tablet: 737px;
 $desktop: 1247px;
 
-// Mixins
 @mixin shrink-limit($width) {
   min-width: $width;
   flex-basis: $width;
 }
 
-// Panel container
 ul {
   margin: 0.5rem -0.25rem;
-  justify-content: stretch; // horizontal alignment
+  justify-content: stretch;
   display: flex;
-  align-items: flex-start; // on top of items
+  align-items: flex-start;
   flex-wrap: wrap;
 }
 
-// Panels
+.submit {
+  margin: 1rem 0rem 0.5rem;
+}
+
+.form-group {
+  margin: 1rem 0rem 0.5rem;
+}
+
+.border {
+  font-family:  monospace;
+  border-radius: 30px;
+  background-color: rgba(255, 204, 210, 0.91);
+  text-align: center;
+}
+
 .wrapper > * {
   margin: 0 0.25rem 0.5rem;
 }
@@ -34,7 +45,13 @@ router-outlet {
     flex-grow: 1;
   }
   #header {
-    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background: #ffd2db;
+  }
+  .border {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -44,7 +61,6 @@ router-outlet {
     flex-basis: 100%; // forces table-panel be screen-wide on next row
 
   }
-
   #header {
     margin-left: auto;
     margin-right: auto;
@@ -53,46 +69,36 @@ router-outlet {
   .mt-4 {
     margin-top: 5rem!important;
   }
-
 }
 
 @media (min-width: $tablet){
-.offset-md-3 {
-  margin-left: 25%;
-}}
-
-@media (min-width: $tablet){
-.offset-md-3 {
-  margin-left: 25%;
-}}
-
-@media (min-width: $tablet) {
+  .offset-md-3 {
+    margin-left: 25%;
+  }
+  .border {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
   .col-md-6 {
     flex: 0 0 auto;
     width: 50%;
   }
 }
 
-// Mobile
 @media screen and (max-width: $tablet) {
-  //#area_x, #area_y, #area_r{
-  //  align-self: center;
-  //}
-  #header {
-    flex-basis: 100%; // forces table-panel be screen-wide on next row
-    margin-left: auto;
-    margin-right: auto;
-    border-bottom: 10em;
-    background: #7deeff;
+  .offset-md-3 {
+    margin-left: 15%;
   }
-
-  .mt-4 {
-    margin-top: 5rem!important;
+  .border {
+    margin-left: 10%;
+    margin-right: 10%;
   }
-
-  .form-control {
-    display: block;
+  .col-md-6 {
+    flex: 0 0 auto;
     width: 50%;
+  }
+  .mt-4 {
+      margin-top: 5rem!important;
   }
 }
 

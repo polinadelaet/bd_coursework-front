@@ -1,38 +1,40 @@
+#header {
+  background: #ffd2db;
+  padding-top: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  text-shadow: -3px -3px 3px #f0ffec;
+  font-weight: bold;
+  font-style: oblique;
+}
 ul {
-  list-style: none; /*убираем маркеры списка*/
-  margin: 0; /*убираем отступы*/
-  padding-left: 0; /*убираем отступы*/
-  margin-top:25px; /*делаем отступ сверху*/
-  background: #7deeff; /*добавляем фон всему меню (заменив этот параметр, вы поменяете цвет всего меню)*/
-  height: 50px; /*задаем высоту*/
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  margin-top: 25px;
+  background: #ffd2db;
+  height: 50px;
 }
 a {
-  text-decoration: none; /*убираем подчеркивание текста ссылок*/
-  background: #7deeff; /*добавляем фон к пункту меню (заменив этот параметр, вы поменяете цвет всех пунктов меню)*/
-  color: #000000; /*меняем цвет ссылок*/
-  padding:0px 15px; /*добавляем отступ*/
-  font-family: arial; /*меняем шрифт*/
-  line-height:50px; /*ровняем меню по вертикали*/
+  text-decoration: none;
+  background: #ffd2db;
+  color: #000000;
+  padding:0px 15px;
+  font-family: arial;
+  line-height: 50px;
   display: block;
-  border-right: 1px solid #efe4f3; /*добавляем бордюр справа*/
-  -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+  border-right: 1px solid #efe4f3;
+  -moz-transition: all 0.3s 0.01s ease;
   -o-transition: all 0.3s 0.01s ease;
   -webkit-transition: all 0.3s 0.01s ease;
 }
 a:hover {
-  background: #5594d4;/*добавляем эффект при наведении*/
+  background: #d48b92;
 }
 li {
-  float:left; /*Размещаем список горизонтально для реализации меню*/
+  float:left;
 }
-
-
-
-
-
-
-
-
 
 $mobile: 0;
 $tablet: 737px;
@@ -44,7 +46,6 @@ $desktop: 1247px;
   flex-basis: $width;
 }
 
-// Panel container
 ul {
   margin: 0.5rem -0.25rem;
   justify-content: stretch; // horizontal alignment
@@ -53,7 +54,6 @@ ul {
   flex-wrap: wrap;
 }
 
-// Panels
 .wrapper > * {
   margin: 0 0.25rem 0.5rem;
 }
@@ -76,28 +76,24 @@ router-outlet {
 // Tablet
 @media screen and (min-width: $tablet) and (max-width: $desktop) {
   #header {
-    flex-basis: 100%; // forces table-panel be screen-wide on next row
-
+    flex-basis: 100%;
   }
 
   #header {
     margin-left: auto;
     margin-right: auto;
-    background: #7deeff;
+    background: #ffd2db;
   }
 }
 
 // Mobile
 @media screen and (max-width: $tablet) {
-  //#area_x, #area_y, #area_r{
-  //  align-self: center;
-  //}
   #header {
-    flex-basis: 100%; // forces table-panel be screen-wide on next row
+    flex-basis: 100%;
     margin-left: auto;
     margin-right: auto;
     border-bottom: 10em;
-    background: #7deeff;
+    background: #ffd2db;
   }
 
   .mt-4 {
@@ -108,4 +104,5 @@ router-outlet {
 .p-toolbar-group-right > * {
   margin-left: 0.4rem
 }
+
 

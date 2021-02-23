@@ -7,11 +7,9 @@ import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {AuthService} from './services/auth.service';
-import { PointsPageComponent } from './points-page/points-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
-import {AuthGuard} from './classes/auth.guard';
 import {ToolbarModule} from 'primeng/toolbar';
 import {ToastModule} from 'primeng/toast';
 import {ButtonModule} from 'primeng/button';
@@ -26,9 +24,6 @@ const appRoutes: Routes = [
       {path: 'login', component: LoginPageComponent},
       {path: 'registration', component: RegisterPageComponent},
     ]},
-  // {path: '', component: SiteLayoutComponent, children: [
-  //     {path: 'points', component: PointsPageComponent}
-  //   ]},
   {path: 'points', component: SiteLayoutComponent},
   {path: '**', redirectTo: '/login'}
 ];
@@ -37,7 +32,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginPageComponent,
-    PointsPageComponent,
     RegisterPageComponent,
     AuthLayoutComponent,
     SiteLayoutComponent,
