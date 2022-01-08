@@ -17,6 +17,10 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {SliderModule} from 'primeng/slider';
 import {TokenInterceptor} from './classes/token.interceptor';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { UsersLayoutComponent } from './layouts/users-layout/users-layout.component';
+import { ScientistLayoutComponent } from './layouts/usersPages/scientist-layout/scientist-layout.component';
+import { JudgeLayoutComponent } from './layouts/usersPages/judge-layout/judge-layout.component';
+import { PolicemanLayoutComponent } from './layouts/usersPages/policeman-layout/policeman-layout.component';
 
 const appRoutes: Routes = [
   {path: '', component: AuthLayoutComponent, children: [
@@ -24,8 +28,17 @@ const appRoutes: Routes = [
       {path: 'login', component: LoginPageComponent},
       {path: 'registration', component: RegisterPageComponent},
     ]},
+  {path: 'users', component: UsersLayoutComponent, children: [
+      {path: 'scientist', component: ScientistLayoutComponent},
+      {path: 'judge', component: JudgeLayoutComponent},
+      {path: 'policeman', component: PolicemanLayoutComponent}
+    ]},
   {path: 'points', component: SiteLayoutComponent},
-  {path: '**', redirectTo: '/login'}
+  // {path: 'users', component: UsersLayoutComponent},
+  // {path: 'scientist', component: ScientistLayoutComponent},
+  // {path: 'judge', component: JudgeLayoutComponent},
+  // {path: 'policeman', component: PolicemanLayoutComponent},
+  // {path: '**', redirectTo: '/login'}
 ];
 
 @NgModule({
@@ -35,7 +48,11 @@ const appRoutes: Routes = [
     RegisterPageComponent,
     AuthLayoutComponent,
     SiteLayoutComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    UsersLayoutComponent,
+    ScientistLayoutComponent,
+    JudgeLayoutComponent,
+    PolicemanLayoutComponent
   ],
   imports: [
     BrowserModule,

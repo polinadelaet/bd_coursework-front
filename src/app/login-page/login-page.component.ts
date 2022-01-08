@@ -16,6 +16,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   private user: User;
   login: string;
   password: string;
+  role: number;
   answer: string;
   done: boolean = false;
   aSub: Subscription;
@@ -36,9 +37,11 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     this.user.login = this.login;
     this.user.password = this.password;
 
+
     this.aSub = this.auth.login(this.user).subscribe(
       p => {
-        this.router.navigate(['points']);
+        /*this.router.navigate(['points']);*/
+        this.router.navigate(['users']);
       },
       error => {
         this.done = true;

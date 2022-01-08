@@ -12,7 +12,8 @@ export class AuthService {
   public token = null;
   private loginH = null;
   private passwordH = null;
-  private url = 'http://localhost:10821';
+  private role = null;
+  private url = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {
     this.token = null;
@@ -22,6 +23,7 @@ export class AuthService {
 
     this.loginH = user.login;
     this.passwordH = user.password;
+    console.log(user.role);
 
     return this.http.post<{token: string}>(this.url + '/auth/login', user)
       .pipe(
@@ -29,6 +31,9 @@ export class AuthService {
           ({token}) => {
             localStorage.setItem('auth-login', user.login);
             localStorage.setItem('auth-pass', user.password);
+            console.log(token);
+            this.role = Number(token);
+            localStorage.setItem('auth-role', this.role);
             this.setLogin(user.login);
           },
           (err) => {
