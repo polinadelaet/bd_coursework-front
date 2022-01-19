@@ -1,0 +1,31 @@
+.main_button{
+  cursor: pointer;
+  width:180px;
+  height:40px;
+  font-size: 15px;
+  background-color: #ffffff;
+  border: none;
+  margin: 15px;
+}
+
+.main_button:hover{
+  background-color: #ffdaba;
+  border: 2px solid #000000;
+}
+
+#main {
+  padding: 40px;
+  margin: 10px 100px;
+  text-align: center;
+  font-family: sans-serif;
+  display: block;
+  font-size: 15px;
+}
+
+#main div{
+  justify-self: center;
+}
+.main_button:focus{
+  background-color: #f2c9a5;
+  border: none;
+}

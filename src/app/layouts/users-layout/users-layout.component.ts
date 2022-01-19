@@ -16,9 +16,11 @@ export class UsersLayoutComponent implements OnInit {
   ngOnInit(): void {
     if (localStorage.getItem('auth-login') !== null && localStorage.getItem('auth-login') !== undefined &&
         localStorage.getItem('auth-role') !== null && localStorage.getItem('auth-role') !== undefined) {
+
       if (Number(localStorage.getItem('auth-role')) === 1) this.router.navigate(['users/scientist']);
       if (Number(localStorage.getItem('auth-role')) === 2) this.router.navigate(['users/judge']);
       if (Number(localStorage.getItem('auth-role')) === 3) this.router.navigate(['users/policeman']);
+
     } else {
       this.router.navigate(['/login']);
     }

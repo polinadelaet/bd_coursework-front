@@ -17,4 +17,8 @@ export class PolicemanLayoutComponent implements OnInit {
     if (Number(localStorage.getItem('auth-role')) != 3) this.router.navigate(['/login']);
   }
 
+  opened_click(): void {
+  }
+  closed_click(): void {
+  }
 }

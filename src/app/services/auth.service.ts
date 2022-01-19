@@ -5,6 +5,8 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {Point} from '../point/point';
 import {TablePoint} from '../tablePoint/tablePoint';
+import {Seer} from "../layouts/usersPages/scientist-layout/scientist-elements/Seer";
+import {Vision} from "../layouts/usersPages/scientist-layout/scientist-elements/Vision";
 
 @Injectable()
 export class AuthService {
@@ -86,5 +88,21 @@ export class AuthService {
 
   addPoint(point: Point): Observable<{result: string}> {
     return this.http.post<{result: string}>(this.url + '/points', point);
+  }
+
+  getSeers() {
+    return this.http.get<Seer[]>(this.url + '/users/scientist');
+  }
+
+  getIdOfActivatedSeers() {
+    return this.http.get<number[]>(this.url + '/users/scientist/get_id_of_activated_seers');
+  }
+
+  addVisions(visions: Vision[]) {
+    return this.http.post<{result: string}>(this.url + '/users/scientist/addVisions', visions);
+  }
+
+  getCurrentCaseId() {
+    return this.http.get<number>(this.url + '/users/scientist/getCurrentCaseId');
   }
 }

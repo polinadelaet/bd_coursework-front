@@ -1,1 +1,54 @@
-<p>scientist-layout works!</p>
+<!DOCTYPE HTML >
+<html>
+<body>
+<div id="main">
+  <!--button mat-button (click)="openDialog()">Open dialog</button!-->
+
+  <!--buttons-->
+  <div id="seers"><input (click)="seers_click()" class="main_button" type="submit" name="button" value="Seers"></div>
+    <div id="participants"><input (click)="participants_click()" class="main_button" type="submit" [disabled]="visionsExist" name="button" value="Add participants"></div>
+
+
+  <div>
+    Заполните видения провидцев под id: <div *ngFor="let seer of activatedSeerList"> id = {{seer}} </div>
+    Дата в формате: 2020-09-13
+  </div>
+
+
+
+  <div id="table-wrapper">
+    <div id="table-scroll">
+      <table id="tableWithVisions">
+        <tr>
+          <th>seer.id</th>
+          <th>date of vision</th>
+          <th>description</th>
+        </tr>
+        <tbody>
+
+        <!--tr *ngFor="let seer of activatedSeerList; let i = index"-->
+        <tr *ngFor="let vision of visionList">
+          <!--td>{{seer}}</td>
+          <td> <input id="date_of_vision" name="date_of_vision" [(ngModel)]="datesOfVisionList[i]" required></td>
+          <td><input id="description" name="description"  [(ngModel)]="descriptionList[i]"></td-->
+          <td>{{vision.seer_id}}</td>
+            <td> <input  type="text" required minlength="1" id="date_of_vision" name="date_of_vision" [(ngModel)]="vision.date_of_vision">
+            </td>
+            <td><input type="text" required minlength="1" id="description" name="description"  [(ngModel)]="vision.description"></td>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div *ngIf="done">
+    <div>{{answer}}</div>
+  </div>
+
+  <div id="area_submit">
+    <p><input type="submit" [disabled]="visionsExist" id="formSubmit" value="Add visions" (click)="addVisions()">
+  </div>
+  </div>
+</body>
+</html>
+

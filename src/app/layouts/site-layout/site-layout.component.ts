@@ -34,6 +34,8 @@ export class SiteLayoutComponent implements OnInit {
     if (localStorage.getItem('auth-login') !== null && localStorage.getItem('auth-login') !== undefined) {
       console.log(localStorage.getItem('auth-login'));
 
+
+
       this.auth.getPoints().subscribe(
         data => {
           this.pointsList = data;
@@ -207,6 +209,7 @@ export class SiteLayoutComponent implements OnInit {
 
   logout() {
     this.auth.logout();
+    this.router.navigate(['/login']);
   }
 }
 

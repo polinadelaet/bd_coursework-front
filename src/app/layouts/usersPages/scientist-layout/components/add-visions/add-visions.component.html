@@ -1,0 +1,36 @@
+<div>
+  Заполните видения провидцев под id: <div *ngFor="let seer of activatedSeerList"> id = {{seer}} </div>
+</div>
+
+<div>
+
+  <div *ngFor="let seer of activatedSeerList">
+    <!--ng-template matStepLabel> Seer {{seer}}</ng-template-->
+    <div>
+      <p><label for="date_of_vision">"Seer id = {{seer}}": </label></p>
+      <p><label for="date_of_vision">Enter date of vision: </label></p>
+      <input id="date_of_vision" name="date_of_vision" [(ngModel)]="date_of_vision" required>
+
+      <p><label for="description">Enter description: </label></p>
+      <input id="description" name="description"  [(ngModel)]="description">
+    </div>
+    <div>
+      <p><label for="date_of_vision">"Seer id = {{seer}}": </label></p>
+      <p><label for="date_of_vision">Enter date of vision: </label></p>
+
+      <p><label for="description">Enter description: </label></p>
+    </div>
+    <div>
+      <p><label for="date_of_vision">"Seer id = {{seer}}": </label></p>
+      <p><label for="date_of_vision">Enter date of vision: </label></p>
+
+      <p><label for="description">Enter description: </label></p>
+    </div>
+      <!--button mat-button matStepperPrevious>Next</button-->
+      <button (click)="completeStep()" >complete</button>
+
+      <!--ng-template matStepLabel> Seer {{seer}}</ng-template-->
+
+  </div>
+</div>
+

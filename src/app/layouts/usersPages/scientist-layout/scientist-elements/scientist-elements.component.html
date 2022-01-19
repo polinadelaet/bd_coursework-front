@@ -1,0 +1,22 @@
+<mat-dialog-content class="mat-typography">
+<div id="table-wrapper">
+  <div id="table-scroll">
+    <table id="tableSeers">
+      <tr>
+        <th>ID</th>
+        <th>PERSON_ID</th>
+        <th>is_activated</th>
+        <th>is_talented</th>
+      </tr>
+      <tbody>
+      <tr *ngFor="let seer of seerList">
+        <td>{{seer.id}}</td>
+        <td>{{seer.person_id.id}}</td>
+        <td>{{seer.is_activated}}</td>
+        <td>{{seer.is_talented}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</mat-dialog-content>

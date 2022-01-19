@@ -17,4 +17,7 @@ export class JudgeLayoutComponent implements OnInit {
     if (Number(localStorage.getItem('auth-role')) != 2) this.router.navigate(['/login']);
   }
 
+  courts_click(): void {
+  }
+
 }

@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {MatDialogModule} from '@angular/material/dialog';
+import {Moment} from "moment";
+
 
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -21,6 +24,12 @@ import { UsersLayoutComponent } from './layouts/users-layout/users-layout.compon
 import { ScientistLayoutComponent } from './layouts/usersPages/scientist-layout/scientist-layout.component';
 import { JudgeLayoutComponent } from './layouts/usersPages/judge-layout/judge-layout.component';
 import { PolicemanLayoutComponent } from './layouts/usersPages/policeman-layout/policeman-layout.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ScientistElementsComponent } from './layouts/usersPages/scientist-layout/scientist-elements/scientist-elements.component';
+import { AddVisionsComponent } from './layouts/usersPages/scientist-layout/components/add-visions/add-visions.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatIconModule} from '@angular/material/icon';
+import { AddParticipantsComponent } from './layouts/usersPages/scientist-layout/components/add-participants/add-participants.component';
 
 const appRoutes: Routes = [
   {path: '', component: AuthLayoutComponent, children: [
@@ -52,11 +61,14 @@ const appRoutes: Routes = [
     UsersLayoutComponent,
     ScientistLayoutComponent,
     JudgeLayoutComponent,
-    PolicemanLayoutComponent
+    PolicemanLayoutComponent,
+    ScientistElementsComponent,
+    AddVisionsComponent,
+    AddParticipantsComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes, { useHash: true }),
+    RouterModule.forRoot(appRoutes, {useHash: true}),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -65,6 +77,10 @@ const appRoutes: Routes = [
     ButtonModule,
     ProgressSpinnerModule,
     SliderModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatStepperModule,
+    MatIconModule
   ],
   exports: [RouterModule],
   providers: [AuthService,
