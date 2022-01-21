@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {MatDialogModule} from '@angular/material/dialog';
-import {Moment} from "moment";
 
 
 import { AppComponent } from './app.component';
@@ -30,6 +29,7 @@ import { AddVisionsComponent } from './layouts/usersPages/scientist-layout/compo
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatIconModule} from '@angular/material/icon';
 import { AddParticipantsComponent } from './layouts/usersPages/scientist-layout/components/add-participants/add-participants.component';
+import { GetPersonsComponent } from './layouts/usersPages/scientist-layout/components/get-persons/get-persons.component';
 
 const appRoutes: Routes = [
   {path: '', component: AuthLayoutComponent, children: [
@@ -64,7 +64,8 @@ const appRoutes: Routes = [
     PolicemanLayoutComponent,
     ScientistElementsComponent,
     AddVisionsComponent,
-    AddParticipantsComponent
+    AddParticipantsComponent,
+    GetPersonsComponent
   ],
   imports: [
     BrowserModule,

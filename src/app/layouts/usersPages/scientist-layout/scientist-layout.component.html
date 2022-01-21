@@ -5,8 +5,9 @@
   <!--button mat-button (click)="openDialog()">Open dialog</button!-->
 
   <!--buttons-->
+  <div id="people"><input (click)="get_people()" class="main_button" type="submit" name="button" value="People"></div>
   <div id="seers"><input (click)="seers_click()" class="main_button" type="submit" name="button" value="Seers"></div>
-    <div id="participants"><input (click)="participants_click()" class="main_button" type="submit" [disabled]="visionsExist" name="button" value="Add participants"></div>
+    <div id="participants"><input (click)="participants_click()" class="main_button" type="submit" [disabled]="!visionsExist" name="button" value="Add participants"></div>
 
 
   <div>

@@ -10,6 +10,7 @@ import {timestamp} from 'rxjs/operators';
 import {Timestamp} from 'rxjs/internal-compatibility';
 import * as moment from 'moment';
 import {AddParticipantsComponent} from "./components/add-participants/add-participants.component";
+import {GetPersonsComponent} from "./components/get-persons/get-persons.component";
 
 
 @Component({
@@ -105,6 +106,8 @@ export class ScientistLayoutComponent implements OnInit {
   }
 
 
-
+  get_people() {
+    this.matDialog.open(GetPersonsComponent);
+  }
 }
 

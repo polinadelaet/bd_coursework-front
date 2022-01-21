@@ -7,6 +7,9 @@ import {Point} from '../point/point';
 import {TablePoint} from '../tablePoint/tablePoint';
 import {Seer} from "../layouts/usersPages/scientist-layout/scientist-elements/Seer";
 import {Vision} from "../layouts/usersPages/scientist-layout/scientist-elements/Vision";
+import {Person} from "../layouts/usersPages/scientist-layout/scientist-elements/Person";
+import {Victim} from "../layouts/usersPages/scientist-layout/scientist-elements/dto/Victim";
+import {Suspect} from "../layouts/usersPages/scientist-layout/scientist-elements/dto/Suspect";
 
 @Injectable()
 export class AuthService {
@@ -104,5 +107,18 @@ export class AuthService {
 
   getCurrentCaseId() {
     return this.http.get<number>(this.url + '/users/scientist/getCurrentCaseId');
+  }
+
+  getPersons() {
+    return this.http.get<Person[]>(this.url + '/users/scientist/getPersons');
+  }
+
+  // tslint:disable-next-line:typedef
+  addVictims(victims: Victim[]) {
+    return this.http.post<{result: string}>(this.url + '/users/scientist/addVictims', victims);
+  }
+  // tslint:disable-next-line:typedef
+  addSuspects(suspects: Suspect[]) {
+    return this.http.post<{result: string}>(this.url + '/users/scientist/addSuspects', suspects);
   }
 }

@@ -3,19 +3,27 @@
 <mat-dialog-content class="mat-typography">
 <div>
   <p><label for="numberOfVictims">Выберите количество жертв: </label></p>
-  <input type="number" id="numberOfVictims" name="numberOfVictims" [(ngModel)]="numberOfVictims">
+  <input type="number" id="numberOfVictims" min="1" name="numberOfVictims" [(ngModel)]="numberOfVictims">
   <div class="area_submit">
     <p><input type="submit" id="numberOfVictimsSubmit" value="Готово" (click)="createVictimsInputs()">
   </div>
 </div>
 
+  <div *ngIf="numberOfVictimsIncorrect">
+    <div>{{answerCreateVictimsInputs}}</div>
+  </div>
+
 <div>
   <p><label for="numberOfSuspects">Выберите количество подозреваемых: </label></p>
-  <input type="number" id="numberOfSuspects" name="numberOfSuspects" [(ngModel)]="numberOfSuspects">
+  <input type="number" id="numberOfSuspects"  min="1" name="numberOfSuspects" [(ngModel)]="numberOfSuspects">
   <div class="area_submit">
     <p><input type="submit" id="numberOfSuspectsSubmit" value="Готово" (click)="createSuspectsInputs()">
   </div>
 </div>
+
+  <div *ngIf="numberOfSuspectsIncorrect">
+    <div>{{answerCreateSuspectsInputs}}</div>
+  </div>
 
   <div id="tableWithVictims" *ngIf="showTableWithVictims">
     <div class="table-wrapper">
@@ -28,12 +36,15 @@
           <tbody>
           <tr *ngFor="let victim of arrayVictimsId; let i = index">
             <td>{{victim.id}}</td>
-            <td> <input  type="number" required minlength="1" [(ngModel)]="victim.person_id" name="date_of_vision" >
+            <td> <input  type="number" min="1" required minlength="1" [(ngModel)]="victim.person_id" name="date_of_vision" >
             </td>
           </tbody>
         </table>
       </div>
     </div>
+  </div>
+  <div *ngIf="victimsIncorrect">
+    <div>{{answerVictims}}</div>
   </div>
   <div id="tableWithSuspects" *ngIf="showTableWithSuspects">
     <div class="table-wrapper">
@@ -48,14 +59,14 @@
           <tbody>
           <tr *ngFor="let suspect of arraySuspectsId; let i = index">
             <td>{{suspect.id}}</td>
-            <td> <input  type="number" required minlength="1" [(ngModel)]="suspect.person_id" ></td>
+            <td> <input  type="number" min="1" required minlength="1" [(ngModel)]="suspect.person_id" ></td>
             <td><select name="mentally_disturbed" [(ngModel)]="suspect.mentally_disturbed" >
               <option value="false" selected>false</option>
               <option value="true">true</option>
             </select></td>
 
-            <td><select name="murder_weapon" [(ngModel)]="suspect.murder_weapon" >
-              <option value="firearm" selected>firearm</option>
+            <td><select name="murder_weapon" [(ngModel)]="suspect.murder_weapon"  >
+              <option value="firearm" selected="selected">firearm</option>
               <option value="cold_steel">cold_steel</option>
               <option value="household_objects">household_objects</option>
               <option value="accidental_weapon">accidental_weapon</option>
@@ -72,9 +83,14 @@
       </div>
     </div>
   </div>
+  <div *ngIf="suspectsIncorrect">
+    <div>{{answerSuspects}}</div>
+  </div>
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial input type="submit" (click)="createSuspects()">Готово</button>
+  <!--button mat-button [mat-dialog-close]="true" cdkFocusInitial input type="submit" (click)="createSuspects()">Готово</button-->
+  <button mat-button cdkFocusInitial input type="submit" (click)="createSuspects()">Готово</button>
+
 </mat-dialog-actions>

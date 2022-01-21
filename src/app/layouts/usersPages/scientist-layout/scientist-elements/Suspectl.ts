@@ -3,13 +3,13 @@ export class Suspectl {
   person_id: number;
   mentally_disturbed: boolean;
   murder_weapon: string;
-  constructor(private id: number,
-              private person_id: number,
-              private mentally_disturbed: boolean,
-              private murder_weapon: string) {
-    this.id = id;
-    this.person_id = person_id;
-    this.mentally_disturbed = mentally_disturbed;
-    this.murder_weapon = murder_weapon;
+  constructor(private id_: number,
+              private p_id: number,
+              private m_d: boolean,
+              private m_w: string) {
+    this.id = id_;
+    this.person_id = p_id;
+    this.mentally_disturbed = m_d;
+    this.murder_weapon = m_w;
   }
 }
