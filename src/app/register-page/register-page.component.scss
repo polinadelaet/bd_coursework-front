@@ -1,3 +1,5 @@
+
+
 $mobile: 0;
 $tablet: 737px;
 $desktop: 1247px;
@@ -26,7 +28,7 @@ ul {
 .border {
   font-family:  monospace;
   border-radius: 30px;
-  background-color: rgba(255, 204, 210, 0.91);
+  background-color: #fff;
   text-align: center;
 }
 
@@ -46,7 +48,7 @@ router-outlet {
   #header {
     margin-left: auto;
     margin-right: auto;
-    background: #ffd2db;
+    background: #fff;
   }
   .border {
     margin-left: auto;

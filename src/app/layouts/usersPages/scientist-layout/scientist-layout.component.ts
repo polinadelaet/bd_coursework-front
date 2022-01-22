@@ -6,10 +6,7 @@ import {ScientistElementsComponent} from './scientist-elements/scientist-element
 import {AddVisionsComponent} from './components/add-visions/add-visions.component';
 import {Seer} from './scientist-elements/Seer';
 import {Vision} from './scientist-elements/Vision';
-import {timestamp} from 'rxjs/operators';
-import {Timestamp} from 'rxjs/internal-compatibility';
 import * as moment from 'moment';
-import {AddParticipantsComponent} from "./components/add-participants/add-participants.component";
 import {GetPersonsComponent} from "./components/get-persons/get-persons.component";
 import {SuspectVictimComponent} from "./components/suspect-victim/suspect-victim.component";
 
@@ -67,9 +64,6 @@ export class ScientistLayoutComponent implements OnInit {
     this.matDialog.open(AddVisionsComponent);
   }
 
-  participants_click() {
-    this.matDialog.open(AddParticipantsComponent);
-  }
 
 
   addVisions() {

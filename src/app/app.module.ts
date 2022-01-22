@@ -29,10 +29,11 @@ import { ScientistElementsComponent } from './layouts/usersPages/scientist-layou
 import { AddVisionsComponent } from './layouts/usersPages/scientist-layout/components/add-visions/add-visions.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatIconModule} from '@angular/material/icon';
-import { AddParticipantsComponent } from './layouts/usersPages/scientist-layout/components/add-participants/add-participants.component';
 import { GetPersonsComponent } from './layouts/usersPages/scientist-layout/components/get-persons/get-persons.component';
 import { SuspectVictimComponent } from './layouts/usersPages/scientist-layout/components/suspect-victim/suspect-victim.component';
 import {MatButtonModule} from "@angular/material/button";
+import { JudgeNotificationComponent } from './layouts/usersPages/judge-layout/judge-notification/judge-notification.component';
+import { PolicemanNotificationComponent } from './layouts/usersPages/policeman-layout/policeman-notification/policeman-notification.component';
 
 const appRoutes: Routes = [
   {path: '', component: AuthLayoutComponent, children: [
@@ -67,9 +68,10 @@ const appRoutes: Routes = [
     PolicemanLayoutComponent,
     ScientistElementsComponent,
     AddVisionsComponent,
-    AddParticipantsComponent,
     GetPersonsComponent,
-    SuspectVictimComponent
+    SuspectVictimComponent,
+    JudgeNotificationComponent,
+    PolicemanNotificationComponent
   ],
     imports: [
         CommonModule,

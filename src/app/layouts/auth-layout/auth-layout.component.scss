@@ -1,24 +1,27 @@
 #header {
-  background: #ffd2db;
+  background: #fff;
   padding-top: 0.5em;
   margin-left: auto;
   margin-right: auto;
-  font-family: Comic Sans MS, Comic Sans, cursive;
-  text-shadow: -3px -3px 3px #f0ffec;
   font-weight: bold;
-  font-style: oblique;
 }
 ul {
   list-style: none;
   margin: 0;
   padding-left: 0;
   margin-top: 25px;
-  background: #ffd2db;
+  background: #fff;
   height: 50px;
 }
+
+h3{
+  margin-right: 200px;
+  font-size: 23px;
+}
+
 a {
   text-decoration: none;
-  background: #ffd2db;
+  background: #fff;
   color: #000000;
   padding:0px 15px;
   font-family: arial;
@@ -30,7 +33,7 @@ a {
   -webkit-transition: all 0.3s 0.01s ease;
 }
 a:hover {
-  background: #d48b92;
+  background: #fff;
 }
 li {
   float:left;
@@ -82,7 +85,7 @@ router-outlet {
   #header {
     margin-left: auto;
     margin-right: auto;
-    background: #ffd2db;
+    background: #fff;
   }
 }
 
@@ -93,7 +96,7 @@ router-outlet {
     margin-left: auto;
     margin-right: auto;
     border-bottom: 10em;
-    background: #ffd2db;
+    background: #fff;
   }
 
   .mt-4 {
