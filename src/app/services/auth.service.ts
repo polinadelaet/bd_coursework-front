@@ -10,6 +10,7 @@ import {Vision} from "../layouts/usersPages/scientist-layout/scientist-elements/
 import {Person} from "../layouts/usersPages/scientist-layout/scientist-elements/Person";
 import {Victim} from "../layouts/usersPages/scientist-layout/scientist-elements/dto/Victim";
 import {Suspect} from "../layouts/usersPages/scientist-layout/scientist-elements/dto/Suspect";
+import {SuspectVictim} from "../layouts/usersPages/scientist-layout/scientist-elements/dto/SuspectVictim";
 
 @Injectable()
 export class AuthService {
@@ -131,4 +132,23 @@ export class AuthService {
   }
 
 
+  addVictim(victim: Victim) {
+    return this.http.post<number>(this.url + '/users/scientist/addVictim', victim);
+  }
+
+  addSuspect(suspect: Suspect) {
+    return this.http.post<number>(this.url + '/users/scientist/addSuspect', suspect);
+  }
+
+  addSuspectVictim(suspectVictimList: SuspectVictim[]) {
+    return this.http.post<string>(this.url + '/users/scientist/addSuspectVictim', suspectVictimList);
+  }
+
+  getSuspectId(person_id: number) {
+    return this.http.post<number>(this.url + '/users/scientist/getSuspectId', person_id);
+  }
+  getVictimtId(person_id: number) {
+    return this.http.post<number>(this.url + '/users/scientist/getVictimtId', person_id);
+  }
 }
+
