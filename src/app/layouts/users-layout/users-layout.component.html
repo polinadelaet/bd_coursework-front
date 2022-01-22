@@ -1,7 +1,16 @@
-<p-toolbar>
+<!--p-toolbar>
   <div class="p-toolbar-group-left">
     <button routerLink="login" pButton pRipple type="button" label="Logout" class="p-button-rounded p-button-danger"
             (click)="logout()"></button>
   </div>
 </p-toolbar>
+<router-outlet></router-outlet-->
+
+<p-toolbar>
+  <div class="container">
+    <p class="button" (click)="logout()">LOGOUT</p>
+  </div>
+</p-toolbar>
+
+
 <router-outlet></router-outlet>

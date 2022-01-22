@@ -1,0 +1,33 @@
+<mat-dialog-content class="mat-typography">
+<div>Загрузить данные по последнему делу?</div>
+<input type="submit" value="Да" (click)="init()">
+  <button mat-button [mat-dialog-close]="true" value="Нет" >Нет</button>
+
+
+<div id="table-wrapper" *ngIf="yes">
+  <div id="table-scroll">
+    <table id="tableWithVisions">
+      <tr>
+        <th>seer.id</th>
+        <th>date of vision</th>
+        <th>description</th>
+      </tr>
+      <tbody>
+
+      <tr *ngFor="let suspectVictiml of arrOfSVL">
+        <td>{{suspectVictiml.vision_id}}</td>
+        <td>Выберите количество жертв: <input  type="number"  required minlength="1" min="1" id="numberOfVictims" name="numberOfVictims" [(ngModel)]="suspectVictiml.num_victims">
+          <input type="submit" value="готово" (click)="createVictims(suspectVictiml.num_victims)">
+        <div *ngIf="numVictims">
+          <input type="number" *ngFor="let s of numberOfVictims">
+        </div>
+        </td>
+        <td>Выберите количество подозреваемых:<input type="number" required minlength="1" min="1" id="numberOfSuspects" name="numberOfSuspects"  [(ngModel)]="suspectVictiml.num_suspects"></td>
+
+      </tbody>
+    </table>
+  </div>
+
+  <input type="submit" (click)="init()">
+</div>
+</mat-dialog-content>

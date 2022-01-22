@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {MatDialogModule} from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
 
 
 import { AppComponent } from './app.component';
@@ -30,6 +31,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatIconModule} from '@angular/material/icon';
 import { AddParticipantsComponent } from './layouts/usersPages/scientist-layout/components/add-participants/add-participants.component';
 import { GetPersonsComponent } from './layouts/usersPages/scientist-layout/components/get-persons/get-persons.component';
+import { SuspectVictimComponent } from './layouts/usersPages/scientist-layout/components/suspect-victim/suspect-victim.component';
+import {MatButtonModule} from "@angular/material/button";
 
 const appRoutes: Routes = [
   {path: '', component: AuthLayoutComponent, children: [
@@ -65,24 +68,27 @@ const appRoutes: Routes = [
     ScientistElementsComponent,
     AddVisionsComponent,
     AddParticipantsComponent,
-    GetPersonsComponent
+    GetPersonsComponent,
+    SuspectVictimComponent
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(appRoutes, {useHash: true}),
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    ToolbarModule,
-    ToastModule,
-    ButtonModule,
-    ProgressSpinnerModule,
-    SliderModule,
-    BrowserAnimationsModule,
-    MatDialogModule,
-    MatStepperModule,
-    MatIconModule
-  ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        RouterModule.forRoot(appRoutes, {useHash: true}),
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        ToolbarModule,
+        ToastModule,
+        ButtonModule,
+        ProgressSpinnerModule,
+        SliderModule,
+        BrowserAnimationsModule,
+        MatDialogModule,
+        MatStepperModule,
+        MatIconModule,
+        MatButtonModule
+    ],
   exports: [RouterModule],
   providers: [AuthService,
     {

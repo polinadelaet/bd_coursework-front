@@ -102,7 +102,7 @@ export class AuthService {
   }
 
   addVisions(visions: Vision[]) {
-    return this.http.post<{result: string}>(this.url + '/users/scientist/addVisions', visions);
+    return this.http.post<number[]>(this.url + '/users/scientist/addVisions', visions);
   }
 
   getCurrentCaseId() {
@@ -113,6 +113,14 @@ export class AuthService {
     return this.http.get<Person[]>(this.url + '/users/scientist/getPersons');
   }
 
+  getLastVisions() {
+    return this.http.get<number[]>(this.url + '/users/scientist/getLastVisions');
+  }
+
+  getNumOfLastVisions() {
+    return this.http.get<number>(this.url + '/users/scientist/getNumOfLastVisions');
+  }
+
   // tslint:disable-next-line:typedef
   addVictims(victims: Victim[]) {
     return this.http.post<{result: string}>(this.url + '/users/scientist/addVictims', victims);
@@ -121,4 +129,6 @@ export class AuthService {
   addSuspects(suspects: Suspect[]) {
     return this.http.post<{result: string}>(this.url + '/users/scientist/addSuspects', suspects);
   }
+
+
 }

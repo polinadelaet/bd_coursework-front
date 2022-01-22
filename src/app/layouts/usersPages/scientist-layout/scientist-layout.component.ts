@@ -11,6 +11,7 @@ import {Timestamp} from 'rxjs/internal-compatibility';
 import * as moment from 'moment';
 import {AddParticipantsComponent} from "./components/add-participants/add-participants.component";
 import {GetPersonsComponent} from "./components/get-persons/get-persons.component";
+import {SuspectVictimComponent} from "./components/suspect-victim/suspect-victim.component";
 
 
 @Component({
@@ -41,6 +42,11 @@ export class ScientistLayoutComponent implements OnInit {
   amount: any;
   public todayDate = new Date();
   visionsExist: boolean;
+  dateIncorrect: boolean;
+  answerDate: string;
+  answerDescription: string;
+  numberOfVisions: number;
+  arrayOfLastVisionsId: number[];
 
   ngOnInit(): void {
     if (Number(localStorage.getItem('auth-role')) != 1) { this.router.navigate(['/login']); }
@@ -67,28 +73,29 @@ export class ScientistLayoutComponent implements OnInit {
 
 
   addVisions() {
-    this.visionsExist = false;
-    this.checkDate(this.visionList[0].date_of_vision);
-    this.done = false;
-    for (let i = 0; i < this.visionList.length; i++) {
-      if (this.visionList[i].date_of_vision == null || this.visionList[i].date_of_vision == undefined) {
-        this.done = true;
-        this.answer = 'date of vision is required';
-        return;
-      } else if (!this.checkDate(this.visionList[i].date_of_vision)) {
-        this.done = true;
-        this.answer = 'your date of vision has incorrect format';
-        return;
-      }
-    }
-    for (let i = 0; i < this.visionList.length; i++) {
-      if (this.visionList[i].description == null || this.visionList[i].description == undefined ||
-            this.visionList[i].description.length < 1) {
-        this.done = true;
-        this.answer = 'fill in the description';
-        return;
-      }
-    }
+    if (!this.check()) {return;}
+    // if (!this.check()) {return;}
+    // this.visionsExist = false;
+    // this.done = false;
+    // for (let i = 0; i < this.visionList.length; i++) {
+    //   if (this.visionList[i].date_of_vision == null || this.visionList[i].date_of_vision == undefined) {
+    //     this.done = true;
+    //     this.answer = 'date of vision is required';
+    //     return;
+    //   } else if (!this.checkDate(this.visionList[i].date_of_vision)) {
+    //     this.done = true;
+    //     this.answer = 'your date of vision has incorrect format';
+    //     return;
+    //   }
+    // }
+    // for (let i = 0; i < this.visionList.length; i++) {
+    //   if (this.visionList[i].description == null || this.visionList[i].description == undefined ||
+    //         this.visionList[i].description.length < 1) {
+    //     this.done = true;
+    //     this.answer = 'fill in the description';
+    //     return;
+    //   }
+    // }
 
     this.auth.addVisions(this.visionList).subscribe(
       data => {
@@ -97,6 +104,35 @@ export class ScientistLayoutComponent implements OnInit {
       );
     this.visionsExist = true;
 
+  }
+
+  check(): boolean {
+    let res = true;
+    this.dateIncorrect = false;
+    this.answerDate = '';
+    this.answerDescription = '';
+
+    for (let i = 0; i < this.visionList.length; i++) {
+      if (this.visionList[i].date_of_vision == null || this.visionList[i].date_of_vision == undefined) {
+        this.dateIncorrect = true;
+        this.answerDate = 'date of vision is required';
+        res = false;
+      } else if (!this.checkDate(this.visionList[i].date_of_vision)) {
+        this.dateIncorrect = true;
+        this.answerDate = 'your date of vision has incorrect format';
+        res = false;
+      }
+    }
+
+    for (let i = 0; i < this.visionList.length; i++) {
+      if (this.visionList[i].description == null || this.visionList[i].description == undefined ||
+        this.visionList[i].description.length < 1) {
+        this.dateIncorrect = true;
+        this.answerDescription = 'fill in the description';
+        res = false;
+      }
+    }
+    return res;
   }
 
   checkDate(s: string) {
@@ -108,6 +144,15 @@ export class ScientistLayoutComponent implements OnInit {
 
   get_people() {
     this.matDialog.open(GetPersonsComponent);
+  }
+
+  suspect_victim_click() {
+    this.matDialog.open(SuspectVictimComponent);
+    this.auth.getNumOfLastVisions().subscribe(
+      num => {
+        this.numberOfVisions = num;
+      }
+    );
   }
 }
 

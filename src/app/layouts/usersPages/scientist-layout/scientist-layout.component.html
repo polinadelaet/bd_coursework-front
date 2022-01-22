@@ -1,55 +1,58 @@
-<!DOCTYPE HTML >
-<html>
-<body>
-<div id="main">
+<div class="body">
+  <div id="main">
   <!--button mat-button (click)="openDialog()">Open dialog</button!-->
 
   <!--buttons-->
-  <div id="people"><input (click)="get_people()" class="main_button" type="submit" name="button" value="People"></div>
+  <div id="people"><a (click)="get_people()" class="main_button" type="submit" name="button">People</a></div>
   <div id="seers"><input (click)="seers_click()" class="main_button" type="submit" name="button" value="Seers"></div>
-    <div id="participants"><input (click)="participants_click()" class="main_button" type="submit" [disabled]="!visionsExist" name="button" value="Add participants"></div>
+  <div id="participants"><input (click)="participants_click()" class="main_button" type="submit" [disabled]="visionsExist" name="button" value="Add participants"></div>
+  <!--div id="suspect_victim"><input (click)="suspect_victim_click()" class="main_button" type="submit"  name="button" value="Add suspect_victim"></div-->
+
+</div>
+  <div class="after_main">
+    <h1><b>Adding visions</b></h1>
 
 
-  <div>
-    Заполните видения провидцев под id: <div *ngFor="let seer of activatedSeerList"> id = {{seer}} </div>
-    Дата в формате: 2020-09-13
-  </div>
-
-
-
-  <div id="table-wrapper">
-    <div id="table-scroll">
-      <table id="tableWithVisions">
+  <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
         <tr>
           <th>seer.id</th>
           <th>date of vision</th>
           <th>description</th>
         </tr>
-        <tbody>
-
-        <!--tr *ngFor="let seer of activatedSeerList; let i = index"-->
-        <tr *ngFor="let vision of visionList">
-          <!--td>{{seer}}</td>
-          <td> <input id="date_of_vision" name="date_of_vision" [(ngModel)]="datesOfVisionList[i]" required></td>
-          <td><input id="description" name="description"  [(ngModel)]="descriptionList[i]"></td-->
-          <td>{{vision.seer_id}}</td>
-            <td> <input  type="text" required minlength="1" id="date_of_vision" name="date_of_vision" [(ngModel)]="vision.date_of_vision">
-            </td>
-            <td><input type="text" required minlength="1" id="description" name="description"  [(ngModel)]="vision.description"></td>
-
-        </tbody>
+        </thead>
       </table>
+  </div>
+      <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tbody>
+
+          <tr *ngFor="let vision of visionList">
+            <td><b>{{vision.seer_id}}</b></td>
+              <td> <input  type="text" required minlength="1" id="date_of_vision" name="date_of_vision" [(ngModel)]="vision.date_of_vision">
+              </td>
+              <td><input type="text" required minlength="1" id="description" name="description"  [(ngModel)]="vision.description"></td>
+
+          </tbody>
+        </table>
+      </div>
+
+    <div class="text">
+      <p> *Date format: 2020-09-13 </p>
+    </div>
+
+
+    <div *ngIf="dateIncorrect">
+      <div>{{answerDate}}</div>
+      <div>{{answerDescription}}</div>
+    </div>
+
+
+    <div id="area_submit">
+      <div class="add_button">
+        <input type="submit" [disabled]="visionsExist" (click)="addVisions()" class="main_button" name="button" value="ADD">
+      </div>
     </div>
   </div>
-
-  <div *ngIf="done">
-    <div>{{answer}}</div>
-  </div>
-
-  <div id="area_submit">
-    <p><input type="submit" [disabled]="visionsExist" id="formSubmit" value="Add visions" (click)="addVisions()">
-  </div>
-  </div>
-</body>
-</html>
-
+</div>

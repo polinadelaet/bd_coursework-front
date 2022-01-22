@@ -1,14 +1,18 @@
-<p>get-persons works!</p>
 <mat-dialog-content class="mat-typography">
-  <div id="table-wrapper">
-    <div id="table-scroll">
-      <table id="tableSeers">
+  <section>
+    <h1>People</h1>
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
         <tr>
           <th>ID</th>
           <th>dob</th>
           <th>пол</th>
           <th>имя</th>
         </tr>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
         <tbody>
         <tr *ngFor="let person of personList">
           <td>{{person.id}}</td>
@@ -19,5 +23,6 @@
         </tbody>
       </table>
     </div>
-  </div>
+
+  </section>
 </mat-dialog-content>
