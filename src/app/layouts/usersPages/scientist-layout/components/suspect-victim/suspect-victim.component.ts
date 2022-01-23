@@ -36,6 +36,10 @@ export class SuspectVictimComponent implements OnInit {
   mapSuspects: Map<number, number>;
   mapVictims: Map<number, number>;
   isCreateSuspectVictim: boolean;
+  incorrectPersonId: boolean;
+  answerIncorrectPersonId: string;
+  arrayOfUsedIndexVictim: Array<number>;
+  arrayOfUsedIndexSuspect: Array<number>;
 
 
   constructor(private auth: AuthService) { }
@@ -51,6 +55,8 @@ export class SuspectVictimComponent implements OnInit {
         this.seersIdList = id;
       }
     );
+    this.arrayOfUsedIndexVictim = new Array<number>();
+    this.arrayOfUsedIndexSuspect = new Array<number>();
     this.personVictimIdList = new Array<number>();
     this.personSuspectIdList = new Array<number>();
     this.addingVictimsList = new Array<Victim>();
@@ -65,6 +71,7 @@ export class SuspectVictimComponent implements OnInit {
     this.yesAddSuspect = false;
 
     this.visionVictimList = new Array<VisionVictiml>(this.visionsIdList.length);
+
     for (let i = 0; i < this.visionVictimList.length; i++) {
       this.visionVictimList[i] = new VisionVictiml(this.visionsIdList[i]);
     }
@@ -92,6 +99,14 @@ export class SuspectVictimComponent implements OnInit {
   }
 
   addSuspectInput() {
+
+    this.incorrectPersonId = false;
+    this.answerIncorrectPersonId = '';
+    if (this.arrayOfUsedIndexVictim.length !== this.visionsIdList.length) {
+      this.incorrectPersonId = true;
+      this.answerIncorrectPersonId = "Fill in ALL visions.";
+      return;
+    }
     this.init2();
     this.yesAddSuspect = true;
 
@@ -102,6 +117,16 @@ export class SuspectVictimComponent implements OnInit {
   }
 
   createVictim(index: number, person_id: number) {
+    if (!this.arrayOfUsedIndexVictim.includes(index)) {
+      this.arrayOfUsedIndexVictim.push(index);
+    }
+    this.incorrectPersonId = false;
+    this.answerIncorrectPersonId = '';
+    if (person_id === null || person_id === undefined || person_id < 1) {
+      this.incorrectPersonId = true;
+      this.answerIncorrectPersonId = "Fill in person.id correctly.";
+      return;
+    }
     console.log(index);
     console.log(person_id);
     let victim;
@@ -129,6 +154,17 @@ export class SuspectVictimComponent implements OnInit {
 
   createSuspect(index: number, person_id: number,
                 mentally_disturbed: boolean, weapon: string) {
+    if (!this.arrayOfUsedIndexSuspect.includes(index)) {
+      this.arrayOfUsedIndexSuspect.push(index);
+    }
+    this.incorrectPersonId = false;
+    this.answerIncorrectPersonId = '';
+    if (person_id === null || person_id === undefined || person_id < 1) {
+      this.incorrectPersonId = true;
+      this.answerIncorrectPersonId = "Fill in person.id correctly.";
+      return;
+    }
+
     console.log(index);
     console.log(person_id);
 
@@ -157,6 +193,15 @@ export class SuspectVictimComponent implements OnInit {
 
 
   createSuspectVictim() {
+
+    this.incorrectPersonId = false;
+    this.answerIncorrectPersonId = '';
+    if (this.arrayOfUsedIndexSuspect.length !== this.visionsIdList.length) {
+      this.incorrectPersonId = true;
+      this.answerIncorrectPersonId = "Fill in ALL visions.";
+      return;
+    }
+
     this.isCreateSuspectVictim = true;
     let m = 0;
     console.log("this.correctArrayOfVisionSuspects[i].suspect_id.length = " + this.correctArrayOfVisionSuspects[0].suspect_id.length);

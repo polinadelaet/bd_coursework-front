@@ -1,8 +1,8 @@
 <mat-dialog-content class="mat-typography">
   <div *ngIf="!yesAddVictim && !yesAddSuspect">
     <div id="text">First you need to add all the victims, then the suspects, to do this, click Ok, after that click Ready</div>
-<input type="submit" value="Ок" (click)="addVictimInput()">
-<button mat-button [mat-dialog-close]="true"  value="Close" >Close</button>
+<input class="button" type="submit" value="Ок" (click)="addVictimInput()">
+<button class="button"  mat-button [mat-dialog-close]="true"  value="Close" >Close</button>
   </div>
 
 
@@ -25,26 +25,38 @@
 
         <tr *ngFor="let visionVictiml of visionVictimList; let i = index">
           <td>{{visionVictiml.vision_id}}</td>
-          <td><input  type="number"  required minlength="1" min="1" id="person_id" name="person_id" [(ngModel)]="visionVictiml.victim_id">
+          <td><input type="number"  required minlength="1" min="1" id="person_id" name="person_id" [(ngModel)]="visionVictiml.victim_id">
           </td>
-          <input type="submit" value="Add" (click)="createVictim(i, visionVictiml.victim_id)">
+          <td>
+            <input type="number" class="{{visionVictiml.vision_id}}" class="button" type="submit" value="Add" (click)="createVictim(i, visionVictiml.victim_id)">
+          </td>
         </tbody>
       </table>
     </div>
-    <input type="submit" value="Готово" (click)="addSuspectInput()">
+    <div *ngIf="incorrectPersonId">
+      <div>{{answerIncorrectPersonId}}</div>
+    </div>
+    <input class="button" type="submit" value="Ready" (click)="addSuspectInput()">
 
   </div>
 
   <div id="table-wrapper" *ngIf="yesAddSuspect">
-    Введите подозреваемых к каждому видению:
-    <div id="table-scroll">
-      <table id="tableWithVisions">
+    <h1><b>Adding suspects</b></h1>
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
         <tr>
           <th>vision.id</th>
           <th>person_id</th>
           <th>mentally_disturbed</th>
           <th>weapon</th>
+          <th></th>
         </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
         <tbody>
 
         <tr *ngFor="let visionSuspectl of visionSuspectList; let i = index">
@@ -52,11 +64,13 @@
           <td><input  type="number"  required minlength="1" min="1" id="p_id" name="numberOfVictims" [(ngModel)]="visionSuspectl.person_id">
           </td>
 
-          <td><select name="mentally_disturbed" [(ngModel)]="visionSuspectl.mentally_disturbed" >
+          <td><div class="select">
+            <select id="standard-select" name="mentally_disturbed" [(ngModel)]="visionSuspectl.mentally_disturbed" >
             <option value="false" selected>false</option>
             <option value="true">true</option>
-          </select></td>
-          <td><select name="murder_weapon" [(ngModel)]="visionSuspectl.weapon"  >
+          </select></div></td>
+
+          <td><div class="select"> <select onchange="color(this.options)" name="murder_weapon" [(ngModel)]="visionSuspectl.weapon"  >
             <option value="firearm" selected="selected">firearm</option>
             <option value="cold_steel">cold_steel</option>
             <option value="household_objects">household_objects</option>
@@ -68,18 +82,26 @@
             <option value="environment">environment</option>
             <option value="vehicle">vehicle</option>
             <option value="explosive">explosive</option>
-          </select></td>
-          <input type="submit" value="Add" (click)="createSuspect(i, visionSuspectl.person_id, visionSuspectl.mentally_disturbed, visionSuspectl.weapon)">
+          </select></div></td>
+
+          <td>
+            <input class="button" type="submit"  value="Add" (click)="createSuspect(i, visionSuspectl.person_id, visionSuspectl.mentally_disturbed, visionSuspectl.weapon)">
+          </td>
+
         </tbody>
       </table>
     </div>
 
+    <div *ngIf="incorrectPersonId">
+      <div>{{answerIncorrectPersonId}}</div>
+    </div>
+
     <div *ngIf="!isCreateSuspectVictim">
-      <input type="submit" value="Готово" (click)="createSuspectVictim()">
+      <input class="button" type="submit" value="Ready" (click)="createSuspectVictim()">
     </div>
 
     <div *ngIf="isCreateSuspectVictim">
-      <button mat-button [mat-dialog-close]="true"  value="Закрыть" >Закрыть</button>
+      <button mat-button [mat-dialog-close]="true" value="Закрыть" >Закрыть</button>
     </div>
 
   </div>

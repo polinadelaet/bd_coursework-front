@@ -1,0 +1,51 @@
+<div *ngIf="answerThereNoCaseForUpdate">
+  {{answer}}
+  <button mat-button [mat-dialog-close]="true" value="Закрыть" >Закрыть</button>
+</div>
+<div *ngIf="!answerThereNoCaseForUpdate && !addUpdateCase">
+<section>
+  <h1>People</h1>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <th>ID</th>
+        <th>policeman_id</th>
+        <th>judge_id</th>
+        <th>status</th>
+        <th>date_of_crime</th>
+        <th>coordinate</th>
+        <th>opening_date</th>
+      </tr>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+      <tr *ngIf="case">
+        <td>{{case.id}}</td>
+        <td>{{case.policeman_id}}</td>
+        <td><input type="number" [(ngModel)]="newcase.judge_id"></td>
+        <td>{{case.status}}</td>
+        <td><input type="text" [(ngModel)]="newcase.date_of_crime"></td>
+        <td><input type="text" [(ngModel)]="newcase.coordinates"></td>
+        <td>{{case.opening_date}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="incorrectUpdate">
+    <div>{{answerIncorrectUpdateJudge}}</div>
+    <div>{{answerIncorrectUpdateDateOfCrime}}</div>
+    <div>{{answerIncorrectUpdateCoordinates}}</div>
+  </div>
+
+  <div id="seers"><input (click)="update_case()" class="main_button" type="submit" name="button" value="update"></div>
+
+
+</section>
+</div>
+<div *ngIf="addUpdateCase">
+  <div>{{answerAfterUpdateCase}}</div>
+  <button mat-button [mat-dialog-close]="true" value="Закрыть" >Закрыть</button>
+</div>
