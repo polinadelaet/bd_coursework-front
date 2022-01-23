@@ -1,16 +1,26 @@
 <mat-dialog-content class="mat-typography">
-<div>Вы должны добавить жертв и подозреваемых к каждому видению.</div>
+  <div *ngIf="!yesAddVictim && !yesAddSuspect">
+    <div id="text">First you need to add all the victims, then the suspects, to do this, click Ok, after that click Ready</div>
 <input type="submit" value="Ок" (click)="addVictimInput()">
-<button mat-button [mat-dialog-close]="true" (click)="beforeExit()" value="Закрыть" >Закрыть</button>
+<button mat-button [mat-dialog-close]="true"  value="Close" >Close</button>
+  </div>
 
 
   <div class="table-wrapper" *ngIf="yesAddVictim">
-    <div class="table-scroll">
-      <table class="tableWithVisions">
+    <h1><b>Adding victims</b></h1>
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
         <tr>
           <th>vision.id</th>
           <th>person.id</th>
+          <th></th>
         </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
         <tbody>
 
         <tr *ngFor="let visionVictiml of visionVictimList; let i = index">
@@ -26,6 +36,7 @@
   </div>
 
   <div id="table-wrapper" *ngIf="yesAddSuspect">
+    Введите подозреваемых к каждому видению:
     <div id="table-scroll">
       <table id="tableWithVisions">
         <tr>
@@ -63,7 +74,13 @@
       </table>
     </div>
 
-    <input type="submit" value="Готово" (click)="createSuspectVictim()">
+    <div *ngIf="!isCreateSuspectVictim">
+      <input type="submit" value="Готово" (click)="createSuspectVictim()">
+    </div>
+
+    <div *ngIf="isCreateSuspectVictim">
+      <button mat-button [mat-dialog-close]="true"  value="Закрыть" >Закрыть</button>
+    </div>
 
   </div>
 </mat-dialog-content>

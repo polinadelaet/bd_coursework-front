@@ -76,6 +76,24 @@
         </div>
       </div>
 
+      <label for="roleId"><b>Role:</b></label>
+      <td id="roleId"><select name="mentally_disturbed" [(ngModel)]="roleId" >
+        <option value="1" selected>scientist</option>
+        <option value="2">judge</option>
+        <option value="3">policeman</option>
+      </select></td>
+
+      <div class="form-group">
+        <label for="login"><b>If you have an id:</b></label>
+        <input type="number"
+               [(ngModel)]="id"
+               name="id"
+               class="form-control"
+               id="id"
+               placeholder="Enter id"
+               >
+      </div>
+
       <button style="background-color: #ffd2db; border-color: #fff1fd; color: #6c6c6c" type="submit" [disabled]="loginv.invalid || passwordv.invalid || f.disabled || (password != password2)" (click)="onSubmit(f)"
               class="btn btn-primary submit">Create<i class="fas fa-sign-in-alt"></i></button>
     </form>

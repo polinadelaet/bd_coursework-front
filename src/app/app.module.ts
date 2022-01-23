@@ -34,6 +34,7 @@ import { SuspectVictimComponent } from './layouts/usersPages/scientist-layout/co
 import {MatButtonModule} from "@angular/material/button";
 import { JudgeNotificationComponent } from './layouts/usersPages/judge-layout/judge-notification/judge-notification.component';
 import { PolicemanNotificationComponent } from './layouts/usersPages/policeman-layout/policeman-notification/policeman-notification.component';
+import { PolicemanUpdateCaseComponent } from './layouts/usersPages/policeman-layout/policeman-update-case/policeman-update-case.component';
 
 const appRoutes: Routes = [
   {path: '', component: AuthLayoutComponent, children: [
@@ -71,7 +72,8 @@ const appRoutes: Routes = [
     GetPersonsComponent,
     SuspectVictimComponent,
     JudgeNotificationComponent,
-    PolicemanNotificationComponent
+    PolicemanNotificationComponent,
+    PolicemanUpdateCaseComponent
   ],
     imports: [
         CommonModule,

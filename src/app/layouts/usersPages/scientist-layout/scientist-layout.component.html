@@ -52,11 +52,17 @@
       <div>{{answerDescription}}</div>
     </div>
 
+    <div *ngIf="addNewVisions">
+      <div>{{answerAfterAddingNewVisions}}</div>
+    </div>
+
 
     <div id="area_submit">
-      <div class="add_button">
+      <div>
         <input type="submit" [disabled]="visionsExist" (click)="addVisions()" class="main_button" name="button" value="ADD">
       </div>
     </div>
+
+
   </div>
 </div>

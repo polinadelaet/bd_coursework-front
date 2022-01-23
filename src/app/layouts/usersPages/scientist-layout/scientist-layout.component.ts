@@ -42,6 +42,8 @@ export class ScientistLayoutComponent implements OnInit {
   dateIncorrect: boolean;
   answerDate: string;
   answerDescription: string;
+  addNewVisions: boolean;
+  answerAfterAddingNewVisions: string;
   numberOfVisions: number;
   arrayOfLastVisionsId: number[];
 
@@ -93,11 +95,20 @@ export class ScientistLayoutComponent implements OnInit {
 
     this.auth.addVisions(this.visionList).subscribe(
       data => {
-            console.log('good');
-        }
-      );
+        console.log('good');
+      },
+      error => {
+        console.log("");
+      }
+    );
     this.visionsExist = true;
+    this.addNewVisions = true;
+    this.answerAfterAddingNewVisions = "Заполняйте теперь участников.";
 
+    for (let i = 0; i < this.visionList.length; i++) {
+      this.visionList[i].date_of_vision = "";
+      this.visionList[i].description = "";
+    }
   }
 
   check(): boolean {
@@ -105,6 +116,7 @@ export class ScientistLayoutComponent implements OnInit {
     this.dateIncorrect = false;
     this.answerDate = '';
     this.answerDescription = '';
+    //console.log(visionList[0].date_of_vision);
 
     for (let i = 0; i < this.visionList.length; i++) {
       if (this.visionList[i].date_of_vision == null || this.visionList[i].date_of_vision == undefined) {
@@ -148,5 +160,7 @@ export class ScientistLayoutComponent implements OnInit {
       }
     );
   }
+
+
 }
 

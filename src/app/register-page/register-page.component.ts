@@ -14,8 +14,10 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
 
   private user: User;
   login: string;
+  id: number;
   password: string;
   password2: string;
+  roleId: number = 1;
   aSub: Subscription;
   answer: string;
   done: boolean = false;
@@ -35,9 +37,13 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(form: NgForm) {
+    console.log(this.roleId);
     this.user = new User();
     this.user.login = this.login;
     this.user.password = this.password;
+    this.user.roleId = this.roleId;
+    this.user.p_id = this.id;
+    console.log(this.user.roleId);
     form.form.disable();
     this.aSub = this.auth.registration(this.user).subscribe(
       () => {

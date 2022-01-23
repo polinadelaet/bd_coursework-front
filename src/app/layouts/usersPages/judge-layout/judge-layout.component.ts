@@ -1,6 +1,8 @@
 import {Component, Inject, NgZone, OnInit} from '@angular/core';
 import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {JudgeNotificationComponent} from "./judge-notification/judge-notification.component";
 
 @Component({
   selector: 'app-judge-layout',
@@ -11,6 +13,7 @@ export class JudgeLayoutComponent implements OnInit {
 
   constructor(private auth: AuthService,
               private zone: NgZone,
+              private matDialog: MatDialog,
               @Inject(Router) private router: Router) { }
 
   ngOnInit(): void {
@@ -18,6 +21,7 @@ export class JudgeLayoutComponent implements OnInit {
   }
 
   courts_click(): void {
+    this.matDialog.open(JudgeNotificationComponent);
   }
 
 }

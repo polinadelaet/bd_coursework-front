@@ -35,6 +35,7 @@ export class SuspectVictimComponent implements OnInit {
   personSuspectIdList: Array<number>;
   mapSuspects: Map<number, number>;
   mapVictims: Map<number, number>;
+  isCreateSuspectVictim: boolean;
 
 
   constructor(private auth: AuthService) { }
@@ -154,13 +155,9 @@ export class SuspectVictimComponent implements OnInit {
 
   }
 
-  beforeExit() {
-    console.log(this.correctArrayOfVisionVictims[0].vision_id);
-    console.log(this.correctArrayOfVisionVictims[0].victim_id[0]);
-    console.log(this.correctArrayOfVisionVictims[0].victim_id[1]);
-  }
 
   createSuspectVictim() {
+    this.isCreateSuspectVictim = true;
     let m = 0;
     console.log("this.correctArrayOfVisionSuspects[i].suspect_id.length = " + this.correctArrayOfVisionSuspects[0].suspect_id.length);
     console.log("this.correctArrayOfVisionVictims[i].victim_id.length = " + this.correctArrayOfVisionVictims[0].victim_id.length);
@@ -179,12 +176,16 @@ export class SuspectVictimComponent implements OnInit {
         }
       }
     }
+    this.sendSuspectVictim();
   }
 
   sendSuspectVictim() {
     this.auth.addSuspectVictim(this.suspectVictimList).subscribe(
       data => {
         console.log(data);
+      },
+      err => {
+
       }
     );
   }

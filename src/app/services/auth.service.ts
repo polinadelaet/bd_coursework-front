@@ -11,6 +11,8 @@ import {Person} from "../layouts/usersPages/scientist-layout/scientist-elements/
 import {Victim} from "../layouts/usersPages/scientist-layout/scientist-elements/dto/Victim";
 import {Suspect} from "../layouts/usersPages/scientist-layout/scientist-elements/dto/Suspect";
 import {SuspectVictim} from "../layouts/usersPages/scientist-layout/scientist-elements/dto/SuspectVictim";
+import {Casel} from "../layouts/usersPages/policeman-layout/Casel";
+import {NewCase} from "../layouts/usersPages/policeman-layout/policeman-update-case/NewCase";
 
 @Injectable()
 export class AuthService {
@@ -29,7 +31,6 @@ export class AuthService {
 
     this.loginH = user.login;
     this.passwordH = user.password;
-    console.log(user.role);
 
     return this.http.post<{token: string}>(this.url + '/auth/login', user)
       .pipe(
@@ -47,6 +48,7 @@ export class AuthService {
           }
         )
       );
+
   }
 
   registration(user: User): Observable<User> {
@@ -59,6 +61,10 @@ export class AuthService {
 
   getToken(): string {
     return this.token;
+  }
+
+  getP_id(log: string) {
+    return this.http.post<number>(this.url + '/users/policeman/getPID', log);
   }
 
   isAuthenticated(): boolean {
@@ -144,11 +150,16 @@ export class AuthService {
     return this.http.post<string>(this.url + '/users/scientist/addSuspectVictim', suspectVictimList);
   }
 
-  getSuspectId(person_id: number) {
-    return this.http.post<number>(this.url + '/users/scientist/getSuspectId', person_id);
+  getCases(policemanId: number) {
+    return this.http.post<Casel[]>(this.url + '/users/policeman/getCasesByPolicemanId', policemanId);
   }
-  getVictimtId(person_id: number) {
-    return this.http.post<number>(this.url + '/users/scientist/getVictimtId', person_id);
+
+  getCaseForUpdate(pid: number) {
+    return this.http.post<Casel>(this.url + '/users/policeman/getCaseForUpdate', pid);
+  }
+
+  updateCase(courtCase: NewCase) {
+    return this.http.post<Casel>(this.url + '/users/policeman/updateCase', courtCase);
   }
 }
 
