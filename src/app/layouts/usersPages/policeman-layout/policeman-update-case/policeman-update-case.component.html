@@ -27,10 +27,10 @@
       <tr *ngIf="case">
         <td>{{case.id}}</td>
         <td>{{case.policeman_id}}</td>
-        <td><input type="number" [(ngModel)]="newcase.judge_id"></td>
+        <td><input class="in" type="number" [(ngModel)]="newcase.judge_id"></td>
         <td>{{case.status}}</td>
-        <td><input type="text" [(ngModel)]="newcase.date_of_crime"></td>
-        <td><input type="text" [(ngModel)]="newcase.coordinates"></td>
+        <td><input class="in" type="text" [(ngModel)]="newcase.date_of_crime"></td>
+        <td><input class="in" type="text" [(ngModel)]="newcase.coordinates"></td>
         <td>{{case.opening_date}}</td>
       </tr>
       </tbody>

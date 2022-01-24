@@ -84,7 +84,7 @@ table{
   margin-bottom: 20px;
 }
 th{
-  padding: 20px 15px;
+  padding: 10px 5px;
   text-align: left;
   font-weight: 500;
   font-size: 12px;
@@ -92,7 +92,7 @@ th{
   text-transform: uppercase;
 }
 td{
-  padding: 15px;
+  padding: 5px;
   text-align: left;
   vertical-align:middle;
   font-weight: 300;
@@ -100,3 +100,8 @@ td{
   color: #fff;
   border-bottom: solid 1px rgba(255,255,255,0.1);
 }
+
+.in{
+  width: 80px;
+}
+
