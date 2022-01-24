@@ -1,8 +1,16 @@
-<h3>Policeman id = {{policemanId}}</h3>
-<div id="main">
+<div id="info">
+  <p><b>You have entered the page with the status "POLICEMAN"</b></p>
+  <br><br><p class="id">Your id = {{policemanId}}</p><br><br>
 
-  <!--buttons-->
-  <div id="seers"><input (click)="opened_click()" class="main_button" type="submit" name="button" value="Opened cases"></div>
-  <div id="visions"><input (click)="update_click()" class="main_button" type="submit" name="button" value="Closed cases"></div>
+  If a new case has appeared, you will see it when you click on the "new case" button
 
+  <br><br><p>To view all the cases, you can click on the "All cases" button</p>
+
+  <div id="main">
+
+    <!--buttons-->
+    <div id="seers"><input (click)="opened_click()" class="main_button" type="submit" name="button" value="All open cases"></div>
+    <div id="visions"><input (click)="update_click()" class="main_button" type="submit" name="button" value="New case"></div>
+
+  </div>
 </div>

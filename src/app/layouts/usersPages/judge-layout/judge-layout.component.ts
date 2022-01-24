@@ -11,6 +11,8 @@ import {JudgeNotificationComponent} from "./judge-notification/judge-notificatio
 })
 export class JudgeLayoutComponent implements OnInit {
 
+  judgeId: number = 1;
+
   constructor(private auth: AuthService,
               private zone: NgZone,
               private matDialog: MatDialog,
@@ -21,7 +23,9 @@ export class JudgeLayoutComponent implements OnInit {
   }
 
   courts_click(): void {
-    this.matDialog.open(JudgeNotificationComponent);
+    this.matDialog.open(JudgeNotificationComponent, {
+      data: this.judgeId
+    });
   }
 
 }

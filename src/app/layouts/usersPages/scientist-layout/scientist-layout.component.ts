@@ -154,11 +154,13 @@ export class ScientistLayoutComponent implements OnInit {
 
   suspect_victim_click() {
     this.matDialog.open(SuspectVictimComponent);
-    this.auth.getNumOfLastVisions().subscribe(
-      num => {
-        this.numberOfVisions = num;
-      }
-    );
+    this.visionsExist = false;
+    this.addNewVisions = false;
+    // this.auth.getNumOfLastVisions().subscribe(
+    //   num => {
+    //     this.numberOfVisions = num;
+    //   }
+    // );
   }
 
 

@@ -13,6 +13,7 @@ import {Suspect} from "../layouts/usersPages/scientist-layout/scientist-elements
 import {SuspectVictim} from "../layouts/usersPages/scientist-layout/scientist-elements/dto/SuspectVictim";
 import {Casel} from "../layouts/usersPages/policeman-layout/Casel";
 import {NewCase} from "../layouts/usersPages/policeman-layout/policeman-update-case/NewCase";
+import {OffenderDTO} from "../layouts/usersPages/judge-layout/OffenderDTO";
 
 @Injectable()
 export class AuthService {
@@ -160,6 +161,14 @@ export class AuthService {
 
   updateCase(courtCase: NewCase) {
     return this.http.post<Casel>(this.url + '/users/policeman/updateCase', courtCase);
+  }
+
+  getOffender() {
+    return this.http.get<OffenderDTO>(this.url + '/users/judge/getOffender');
+  }
+
+  updateOffender(offender: OffenderDTO) {
+    return this.http.post(this.url + '/users/judge/updateOffender', offender);
   }
 }
 

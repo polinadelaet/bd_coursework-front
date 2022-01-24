@@ -1,8 +1,50 @@
-<div id="main">
+<div *ngIf="answerThereNoOffenderForUpdate">
+    {{answer}}
+    <button mat-button [mat-dialog-close]="true" value="Закрыть" >Закрыть</button>
+  </div>
+  <div *ngIf="!answerThereNoOffenderForUpdate && !addUpdateOffender">
+    <section>
+      <h1>Offender</h1>
+      <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <th>ID</th>
+            <th>suspect_id</th>
+            <th>type_of_crime</th>
+            <th>arrest_date</th>
+          </tr>
+        </table>
+      </div>
+      <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tbody>
+          <tr *ngIf="offender">
+            <td>{{offender.id}}</td>
+            <td>{{offender.suspect_id}}</td>
+            <td><div class="select">
+              <select id="standard-select" name="type_of_crime" [(ngModel)]="newOffender.type_of_crime" >
+                <option value="deliberate" selected>deliberate</option>
+                <option value="recklessly">recklessly</option>
+                <option value="temporary_insanity">temporary_insanity</option>
+              </select></div></td>
+            <td>{{offender.arrest_date}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
 
-  <!--пока действие не будет выполнено, уведомление не исчезает-->
-  <!--пример роли: POLICEMAN-->
-  <!--пример действия: close case №8-->
-  <div class="text"><p>You should to complete a new case hearing</p></div>
+      <div *ngIf="incorrectUpdate">
+        <div>{{answerIncorrectUpdate}}</div>
+      </div>
 
-</div>
+      <div *ngIf="!addUpdateOffender">
+      <div id="seers"><input (click)="update_offender()" class="main_button" type="submit" name="button" value="update"></div>
+      </div>
+
+    </section>
+  </div>
+  <div *ngIf="addUpdateOffender">
+    <div>{{answerAfterUpdateOffender}}</div>
+    <button mat-button [mat-dialog-close]="true" value="Закрыть" >Закрыть</button>
+  </div>
+
